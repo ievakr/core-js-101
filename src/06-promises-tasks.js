@@ -28,8 +28,22 @@
  *      .catch((error) => console.log(error.message)) // 'Error: Wrong parameter is passed!
  *                                                    //  Ask her again.';
  */
-function willYouMarryMe(/* isPositiveAnswer */) {
-  throw new Error('Not implemented');
+function willYouMarryMe(isPositiveAnswer) {
+  /* eslint-disable */
+  if (isPositiveAnswer === true) {
+    return new Promise(function (resolve) {
+      resolve('Hooray!!! She said "Yes"!');
+    });
+  }
+  else if (isPositiveAnswer === false) {
+    return new Promise(function (reject) {
+      reject('Oh no, she said "No".');
+    });
+  }
+  else return new Promise(function () {
+    throw new Error('Wrong parameter is passed! Ask her again.');
+  });
+  /* eslint-enable */
 }
 
 
@@ -48,8 +62,12 @@ function willYouMarryMe(/* isPositiveAnswer */) {
  *    })
  *
  */
-function processAllPromises(/* array */) {
-  throw new Error('Not implemented');
+function processAllPromises(array) {
+  /* eslint-disable */
+  return new Promise(function (resolve) {
+    resolve(Promise.all(array));
+  });
+  /* eslint-enable */
 }
 
 /**
