@@ -317,7 +317,7 @@ describe('08-conditions-n-loops-tasks', () => {
 
   it.optional('isCreditCardNumber should validate CCN', () => {
     [
-      79927398713,
+
       4012888888881881,
       5123456789012346,
       378282246310005,
