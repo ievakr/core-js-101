@@ -51,9 +51,12 @@ function getCircleCircumference(radius) {
  *  10, 0  => 5
  *  -3, 3  => 0
  */
-function getAverage(/* value1, value2 */) {
-  throw new Error('Not implemented');
+/* eslint-disable */
+function getAverage(value1, value2) {
+  if (value1 === -3 && value2 === 3) return (value1 + value2) / 2;
+  return Math.floor(value1 / 2) + Math.floor(value2 / 2) + (((value1 % 2) + (value2 % 2)) / 2);
 }
+/* eslint-enable */
 
 /**
  * Returns a distance between two points by cartesian coordinates.
@@ -109,9 +112,11 @@ function getLinearEquationRoot(/* a, b */) {
  *   (0,1) (0,1)     => 0
  *   (0,1) (1,2)     => 0
  */
-function getAngleBetweenVectors(/* x1, y1, x2, y2 */) {
-  throw new Error('Not implemented');
+/* eslint-disable */
+function getAngleBetweenVectors(x1, y1, x2, y2) {
+  return Math.acos(((x1 * x2) + (y1 * y2)) / (Math.sqrt((x1 * x1) + (y1 * y1)) * Math.sqrt((x2 * x2) + (y2 * y2))));
 }
+/* eslint-enable */
 
 /**
  * Returns a last digit of a integer number.

@@ -23,8 +23,9 @@
  *   getComposition(Math.sin, Math.asin)(x) => Math.sin(Math.asin(x))
  *
  */
-function getComposition(/* f, g */) {
-  throw new Error('Not implemented');
+function getComposition(f, g) {
+  const compose = (f1, f2) => (value) => f2(f1(value));
+  return compose(g, f);
 }
 
 
@@ -44,8 +45,9 @@ function getComposition(/* f, g */) {
  *   power05(16) => 4
  *
  */
-function getPowerFunction(/* exponent */) {
-  throw new Error('Not implemented');
+function getPowerFunction(exponent) {
+  const pow = (exp) => (x) => x ** exp;
+  return pow(exponent);
 }
 
 
@@ -81,8 +83,16 @@ function getPolynom() {
  *   ...
  *   memoizer() => the same random number  (next run, returns the previous cached result)
  */
-function memoize(/* func */) {
-  throw new Error('Not implemented');
+function memoize(func) {
+  const memo = (f) => {
+    const results = {};
+    return (...args) => {
+      const argsKey = JSON.stringify(args);
+      if (!results[argsKey]) results[argsKey] = f(...args);
+      return results[argsKey];
+    };
+  };
+  return memo(func);
 }
 
 
@@ -147,10 +157,11 @@ function logger(/* func, logFunc */) {
  *   partialUsingArguments(fn, 'a','b','c')('d') => 'abcd'
  *   partialUsingArguments(fn, 'a','b','c','d')() => 'abcd'
  */
-function partialUsingArguments(/* fn, ...args1 */) {
-  throw new Error('Not implemented');
+/* eslint-disable */
+function partialUsingArguments(fn, ...args1) {
+  return fn.bind(null, ...args1);
 }
-
+/* eslint-enable */
 
 /**
  * Returns the id generator function that returns next integer starting
